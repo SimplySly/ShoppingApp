@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ShoppingApp.Application/ShoppingApp.Application.csproj" />
+  <Project Path="ShoppingApp.Core/ShoppingApp.Core.csproj" />
+  <Project Path="ShoppingApp.Infrastructure/ShoppingApp.Infrastructure.csproj" />
+  <Project Path="ShoppingApp.Web/ShoppingApp.Web.csproj" />
+</Solution>
