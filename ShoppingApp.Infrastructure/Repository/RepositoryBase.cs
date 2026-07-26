@@ -7,7 +7,7 @@ namespace ShoppingApp.Infrastructure.Repository;
 public class RepositoryBase<T> : IRepository<T>
     where T : class
 {
-    private readonly ShoppingAppDbContext _dbContext;
+    protected readonly ShoppingAppDbContext _dbContext;
 
     protected RepositoryBase(ShoppingAppDbContext shoppingAppDbContext)
     {

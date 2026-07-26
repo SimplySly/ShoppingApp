@@ -5,5 +5,5 @@ namespace ShoppingApp.Core.Repository;
 
 public interface IProductRepository : IRepository<Product>
 {
-    Task<IEnumerable<Product>> GetProductsPage(int page, int pageSize);
+    Task<IEnumerable<Product>> GetProductsPage(int page, int pageSize, CancellationToken cancellationToken);
 }

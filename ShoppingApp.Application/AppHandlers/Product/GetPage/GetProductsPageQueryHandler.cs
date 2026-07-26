@@ -3,9 +3,9 @@ using ShoppingApp.Core.Errors;
 using ShoppingApp.Core.Repository;
 using ShoppingApp.Core.Utility;
 
-namespace ShoppingApp.Application.Product.GetPage;
+namespace ShoppingApp.Application.AppHandlers.Product.GetPage;
 
-public class GetProductsPageQueryHandler : IQueryHandler<GetProductsPageQuery, IEnumerable<ProductDto>>
+public sealed class GetProductsPageQueryHandler : IQueryHandler<GetProductsPageQuery, IEnumerable<ProductDto>>
 {
     private readonly IProductRepository _productRepository;
 
@@ -27,7 +27,7 @@ public class GetProductsPageQueryHandler : IQueryHandler<GetProductsPageQuery, I
         }
 
         var dbResult = await _productRepository
-            .GetProductsPage(query.page, query.pageSize);
+            .GetProductsPage(query.page, query.pageSize, cancellationToken);
 
         // Map the result to ProductDto
         var result = dbResult

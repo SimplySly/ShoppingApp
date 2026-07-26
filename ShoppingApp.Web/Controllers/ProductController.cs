@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShoppingApp.Application;
 using ShoppingApp.Application.Abstractions.Messaging;
-using ShoppingApp.Application.Product.GetPage;
+using ShoppingApp.Application.AppHandlers.Product.GetPage;
 
 namespace ShoppingApp.Web.Controllers;
 

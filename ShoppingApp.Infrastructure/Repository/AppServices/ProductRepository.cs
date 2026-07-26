@@ -3,7 +3,7 @@ using ShoppingApp.Core.Entities;
 using ShoppingApp.Core.Repository;
 using ShoppingApp.Infrastructure.Database;
 
-namespace ShoppingApp.Infrastructure.Repository.Products;
+namespace ShoppingApp.Infrastructure.Repository.AppServices;
 
 public sealed class ProductRepository : RepositoryBase<Product>, IProductRepository
 {
@@ -15,12 +15,12 @@ public sealed class ProductRepository : RepositoryBase<Product>, IProductReposit
         _dbContext = dbContext;
     }
 
-    public async Task<IEnumerable<Product>> GetProductsPage(int page, int pageSize)
+    public async Task<IEnumerable<Product>> GetProductsPage(int page, int pageSize, CancellationToken cancellationToken)
     {
         var result = await _dbContext.Products
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
 
         return result;
     }

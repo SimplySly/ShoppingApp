@@ -1,6 +1,6 @@
 ﻿using ShoppingApp.Application.Abstractions.Messaging;
 
-namespace ShoppingApp.Application.Product.GetPage;
+namespace ShoppingApp.Application.AppHandlers.Product.GetPage;
 
 public record GetProductsPageQuery(int page,
     int pageSize) 
