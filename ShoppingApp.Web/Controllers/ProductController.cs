@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ShoppingApp.Application;
 using ShoppingApp.Application.Abstractions.Messaging;
 using ShoppingApp.Application.AppHandlers.Product.GetPage;
@@ -17,6 +18,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet("list")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetProductList([FromQuery] int page, [FromQuery] int pageSize, CancellationToken cancellationToken)
     {
         var query = new GetProductsPageQuery(page, pageSize);

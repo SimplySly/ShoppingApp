@@ -6,6 +6,7 @@ using ShoppingApp.Application.AppHandlers.Auth.RefreshLogin;
 using ShoppingApp.Application.AppHandlers.Auth.Register;
 using ShoppingApp.Application.AppHandlers.Auth.Roles.GetRoles;
 using ShoppingApp.Application.Dto;
+using ShoppingApp.Core.Static;
 
 namespace ShoppingApp.Web.Controllers;
 
@@ -21,6 +22,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
+    [AllowAnonymous]
     public async Task<IActionResult> Register([FromBody] RegisterCommand command, CancellationToken cancellationToken)
     {
         var result = await _requestDispatcher.ExecuteCommand(command, cancellationToken);
@@ -34,6 +36,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
+    [AllowAnonymous]
     public async Task<IActionResult> Login([FromBody] LoginCommand command, CancellationToken cancellationToken)
     {
         var result = await _requestDispatcher.ExecuteCommand<LoginCommand, LoginResponseDto>(command, cancellationToken);
@@ -46,6 +49,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("refresh-login")]
+    [AllowAnonymous]
     public async Task<IActionResult> RefreshLogin([FromBody] RefreshLoginCommand command, CancellationToken cancellationToken)
     {
         var result = await _requestDispatcher.ExecuteCommand<RefreshLoginCommand, LoginResponseDto>(command, cancellationToken);
@@ -58,7 +62,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpGet("roles")]
-    [Authorize]
+    [Authorize(Roles = AuthRoles.Admin)]
     public async Task<IActionResult> GetRoles(CancellationToken cancellationToken)
     {
         var query = new GetRolesQuery();
