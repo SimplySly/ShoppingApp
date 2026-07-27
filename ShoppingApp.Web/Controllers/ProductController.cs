@@ -8,7 +8,7 @@ namespace ShoppingApp.Web.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ProductController : ControllerBase
+public sealed class ProductController : ControllerBase
 {
     private readonly IRequestDispatcher _requestDispatcher;
 

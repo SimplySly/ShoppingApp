@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using ShoppingApp.Application.Di;
 using ShoppingApp.Application.Settings;
 using ShoppingApp.Infrastructure.Database;
@@ -12,19 +13,33 @@ namespace ShoppingApp.Web;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
         AddComponents(builder);
         AddAuthentication(builder);
+        AddLogger(builder);
         AddServices(builder);
 
         var app = builder.Build();
 
         UseMiddleware(app);
 
-        app.Run();
+        try
+        {
+            Log.Information("Starting server...");
+            app.Run();
+            Log.Information("Stopping server...");
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Unexpected error occured");
+        }
+        finally
+        {
+            await Log.CloseAndFlushAsync(); // Ensure all logs written before app exits
+        }
     }
 
     public static void AddComponents(WebApplicationBuilder builder)
@@ -61,6 +76,16 @@ public class Program
                     ClockSkew = TimeSpan.FromMinutes(jwtSettings.ClockSkewInMinutes)
                 };
             });
+    }
+
+    private static void AddLogger(WebApplicationBuilder builder)
+    {
+        Log.Logger = new LoggerConfiguration()
+            .ReadFrom.Configuration(builder.Configuration)
+            .CreateLogger();
+
+        builder.Logging.ClearProviders();
+        builder.Logging.AddSerilog(Log.Logger);
     }
 
     private static void AddServices(WebApplicationBuilder builder)
