@@ -1,5 +1,8 @@
-﻿namespace ShoppingApp.Core.Errors;
+﻿using ShoppingApp.Core.Utility;
 
-internal class ProductErrors
+namespace ShoppingApp.Core.Errors;
+
+public static class ProductErrors
 {
+    public static Error ProductNotFound(int id) => new("Product.NotFound", $"Product with id {id} doesn't exist."); 
 }

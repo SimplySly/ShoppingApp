@@ -2,13 +2,11 @@
 
 namespace ShoppingApp.Core.Entities;
 
-public class RefreshToken
+public sealed class Order
 {
     public int Id { get; set; }
     public required string UserId { get; set; }
-    public required string Token { get; set; }
-    public DateTime ExpiresAt { get; set; }
-    public bool Valid { get; set; }
 
+    public List<OrderItem> OrderItems { get; set; } = [];
     public IdentityUser? User { get; set; }
 }

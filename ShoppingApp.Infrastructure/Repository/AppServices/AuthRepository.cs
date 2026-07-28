@@ -32,6 +32,13 @@ public sealed class AuthRepository : IAuthRepository
             .SingleOrDefaultAsync(u => u.Email == email, cancellationToken);
     }
 
+    public async Task<IdentityUser?> GetUserById(string id, CancellationToken cancellationToken)
+    {
+        return await _dbContext.Users
+            .AsNoTracking()
+            .SingleOrDefaultAsync(u => u.Id == id, cancellationToken);
+    }
+
     public async Task<IEnumerable<string>> GetUserRoles(IdentityUser user)
     {
         return await _userManager.GetRolesAsync(user);

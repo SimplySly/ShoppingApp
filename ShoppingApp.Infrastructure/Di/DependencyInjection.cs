@@ -23,7 +23,8 @@ public static class DependencyInjection
             .AddScoped<IUnitOfWork, UnitOfWork>()
             .AddScoped<IAuthRepository, AuthRepository>()
             .AddScoped<IRefreshTokenRepository, RefreshTokenRepository>()
-            .AddScoped<IProductRepository, ProductRepository>();
+            .AddScoped<IProductRepository, ProductRepository>()
+            .AddScoped<IOrderRepository, OrderRepository>();
 
         return services;
     }

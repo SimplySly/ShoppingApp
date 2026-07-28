@@ -34,7 +34,7 @@ public class RefreshLoginCommandHandler : ICommandHandler<RefreshLoginCommand, L
             return Result.Failure<LoginResponseDto>(AuthErrors.InvalidCredentials());
         }
 
-        var newAccessToken = await _authService.GenerateAccessToken(refreshTokenEntity.User);
+        var newAccessToken = await _authService.GenerateAccessToken(refreshTokenEntity.User!);
         var newRefreshToken = _authService.GenerateRefreshToken();
 
         refreshTokenEntity.Token = newRefreshToken;
