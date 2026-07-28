@@ -102,12 +102,12 @@ public class Program
                 Title = "ShoppingApp API",
                 Description = "API for enterprise shopping application"
             });
-            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+            options.AddSecurityDefinition("bearer", new OpenApiSecurityScheme
             {
                 Type = SecuritySchemeType.Http,
                 Scheme = "bearer",
                 BearerFormat = "JWT",
-                Description = "JWT Authorization header using Bearer scheme"
+                Description = "JWT Authorization header using the Bearer scheme."
             });
             options.AddSecurityRequirement(document => new OpenApiSecurityRequirement
             {
