@@ -7,6 +7,7 @@ using ShoppingApp.Application.Di;
 using ShoppingApp.Application.Settings;
 using ShoppingApp.Infrastructure.Database;
 using ShoppingApp.Infrastructure.Di;
+using ShoppingApp.Web.Middleware;
 using System.Diagnostics;
 using System.Text;
 
@@ -135,5 +136,6 @@ public class Program
         app.UseAuthorization();
         app.MapControllers()
             .RequireAuthorization();
+        app.UseMiddleware<GlobalExceptionHandler>();
     }
 }
