@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi;
 using Serilog;
 using ShoppingApp.Application.Di;
 using ShoppingApp.Application.Settings;
@@ -20,6 +21,7 @@ public class Program
         AddComponents(builder);
         AddAuthentication(builder);
         AddLogger(builder);
+        AddSwagger(builder);
         AddServices(builder);
 
         var app = builder.Build();
@@ -88,6 +90,31 @@ public class Program
         builder.Logging.AddSerilog(Log.Logger);
     }
 
+    private static void AddSwagger(WebApplicationBuilder builder)
+    {
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen(options =>
+        {
+            options.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Version = "v1",
+                Title = "ShoppingApp API",
+                Description = "API for enterprise shopping application"
+            });
+            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+            {
+                Type = SecuritySchemeType.Http,
+                Scheme = "bearer",
+                BearerFormat = "JWT",
+                Description = "JWT Authorization header using Bearer scheme"
+            });
+            options.AddSecurityRequirement(document => new OpenApiSecurityRequirement
+            {
+                [new OpenApiSecuritySchemeReference("bearer", document)] = []
+            });
+        });
+    }
+
     private static void AddServices(WebApplicationBuilder builder)
     {
         builder.Services
@@ -97,6 +124,12 @@ public class Program
 
     public static void UseMiddleware(WebApplication app)
     {
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
+
         app.UseHttpsRedirection();
         app.UseAuthentication();
         app.UseAuthorization();
