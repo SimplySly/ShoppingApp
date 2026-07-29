@@ -14,10 +14,12 @@ Setup
 1. Clone the repository:
 
    git clone https://github.com/SimplySly/ShoppingApp
+   
+2. Restore database from bak file in Database/ShoppingAppBackup.bak
 
-2. Open the solution in Visual Studio 2026 (ShoppingApp.slnx).
+3. Open the solution in Visual Studio 2026 (ShoppingApp.slnx).
 
-3. Configure user secrets for the Web project:
+4. Configure user secrets for the Web project:
 
    - In Solution Explorer, right-click the ShoppingApp.Web project and choose "Manage User Secrets".
    - Add the following secrets (example format)
@@ -32,8 +34,8 @@ Setup
    }
 
    - appsettings.json already contains placeholders. See ShoppingApp.Web/appsettings.json
-
-4. Launch the application using the HTTPS profile for the Web project (select the ShoppingApp.Web HTTPS profile in Visual Studio and run). Ensure the HTTPS port matches the Jwt:Issuer if you changed it.
+   
+5. Launch the application using the HTTPS profile for the Web project (select the ShoppingApp.Web HTTPS profile in Visual Studio and run). Ensure the HTTPS port matches the Jwt:Issuer if you changed it.
 
 Testing
 -------
