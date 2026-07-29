@@ -20,7 +20,7 @@ Setup
 3. Configure user secrets for the Web project:
 
    - In Solution Explorer, right-click the ShoppingApp.Web project and choose "Manage User Secrets".
-   - Add the following secrets (example format) — only add the Jwt secret key and the database connection string to user secrets. Do NOT add Jwt:Issuer or Jwt:Audience to user secrets; those remain in ShoppingApp.Web/appsettings.json.
+   - Add the following secrets (example format)
 
    {
 	 "ConnectionStrings": {
