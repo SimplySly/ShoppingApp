@@ -1,0 +1,994 @@
+{
+  "info": {
+    "_postman_id": "76489a69-3523-4989-8a25-4f1974378c49",
+    "name": "ShoppingApp",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "47381816",
+    "_collection_link": "https://go.postman.co/collection/47381816-76489a69-3523-4989-8a25-4f1974378c49?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Healthcheck",
+      "item": [
+        {
+          "name": "Healthcheck",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access-token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server-url}}/api/Healthcheck",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "api",
+                "Healthcheck"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Api",
+      "item": [
+        {
+          "name": "Product",
+          "item": [
+            {
+              "name": "GetPagedProducts",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access-token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{server-url}}/api/Product/list?page=1&pageSize=10",
+                  "host": [
+                    "{{server-url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Product",
+                    "list"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access-token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"Name\": \"Umbrella\",\r\n    \"Sku\": 1320,\r\n    \"Price\": 5.20\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{server-url}}/api/Product/create",
+                  "host": [
+                    "{{server-url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Product",
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access-token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"Id\": 4,\r\n    \"Name\": \"Umbrella\",\r\n    \"Sku\": 1450,\r\n    \"Price\": 5.20\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{server-url}}/api/Product/update",
+                  "host": [
+                    "{{server-url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Product",
+                    "update"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access-token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"Id\": 4\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{server-url}}/api/Product/delete",
+                  "host": [
+                    "{{server-url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Product",
+                    "delete"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Order",
+          "item": [
+            {
+              "name": "Create",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{access-token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\r\n    {\r\n        \"ProductId\": 1,\r\n        \"Quantity\": 20\r\n    },\r\n    {\r\n        \"ProductId\": 3,\r\n        \"Quantity\": 6\r\n    }\r\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{server-url}}/api/Order/create",
+                  "host": [
+                    "{{server-url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Order",
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "Admin",
+              "item": [
+                {
+                  "name": "AdminLogin",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "if (!pm.environment.name.startsWith('ShoppingApp')) {\r",
+                          "    console.log('Environment is not Shopping App');\r",
+                          "    return;\r",
+                          "}\r",
+                          "\r",
+                          "let jsonData = pm.response.json();\r",
+                          "if (jsonData.isSuccess){\r",
+                          "    pm.environment.set(\"access-token\", jsonData.value.accessToken);\r",
+                          "    pm.environment.set(\"refresh-token\", jsonData.value.refreshToken);\r",
+                          "}"
+                        ],
+                        "type": "text/javascript",
+                        "packages": {},
+                        "requests": {}
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"email\": \"admin@shoppingapp.hr\",\r\n    \"password\": \"Admin123!\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{server-url}}/api/Auth/login",
+                      "host": [
+                        "{{server-url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Auth",
+                        "login"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "GetRoles",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{access-token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{server-url}}/api/Auth/roles",
+                      "host": [
+                        "{{server-url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Auth",
+                        "roles"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Register",
+              "item": [
+                {
+                  "name": "RegisterUser",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"username\": \"CustomerTest\",\r\n    \"email\": \"test@test.hr\",\r\n    \"password\": \"Test123!\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{server-url}}/api/Auth/register",
+                      "host": [
+                        "{{server-url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Auth",
+                        "register"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Login",
+              "item": [
+                {
+                  "name": "LoginUser",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "if (!pm.environment.name.startsWith('ShoppingApp')) {\r",
+                          "    console.log('Environment is not Shopping App');\r",
+                          "    return;\r",
+                          "}\r",
+                          "\r",
+                          "let jsonData = pm.response.json();\r",
+                          "if (jsonData.isSuccess){\r",
+                          "    pm.environment.set(\"access-token\", jsonData.value.accessToken);\r",
+                          "    pm.environment.set(\"refresh-token\", jsonData.value.refreshToken);\r",
+                          "}"
+                        ],
+                        "type": "text/javascript",
+                        "packages": {},
+                        "requests": {}
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"email\": \"nesto@nesto.hr\",\r\n  \"password\": \"Test.123\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{server-url}}/api/Auth/login",
+                      "host": [
+                        "{{server-url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Auth",
+                        "login"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "RefreshLogin",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "if (!pm.environment.name.startsWith('ShoppingApp')) {\r",
+                          "    console.log('Environment is not Shopping App');\r",
+                          "    return;\r",
+                          "}\r",
+                          "\r",
+                          "let jsonData = pm.response.json();\r",
+                          "if (jsonData.isSuccess){\r",
+                          "    pm.environment.set(\"access-token\", jsonData.value.accessToken);\r",
+                          "    pm.environment.set(\"refresh-token\", jsonData.value.refreshToken);\r",
+                          "}"
+                        ],
+                        "type": "text/javascript",
+                        "packages": {},
+                        "requests": {}
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"refreshToken\": \"{{refresh-token}}\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{server-url}}/api/Auth/refresh-login",
+                      "host": [
+                        "{{server-url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Auth",
+                        "refresh-login"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Happy Flow Create Order",
+      "item": [
+        {
+          "name": "(1) All products",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access-token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server-url}}/api/Product/list?page=1&pageSize=10",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "api",
+                "Product",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "(2) Customer login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (!pm.environment.name.startsWith('ShoppingApp')) {\r",
+                  "    console.log('Environment is not Shopping App');\r",
+                  "    return;\r",
+                  "}\r",
+                  "\r",
+                  "let jsonData = pm.response.json();\r",
+                  "if (jsonData.isSuccess){\r",
+                  "    pm.environment.set(\"access-token\", jsonData.value.accessToken);\r",
+                  "    pm.environment.set(\"refresh-token\", jsonData.value.refreshToken);\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"nesto@nesto.hr\",\r\n  \"password\": \"Test.123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server-url}}/api/Auth/login",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "api",
+                "Auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "(3) Place an order",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access-token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "[\r\n    {\r\n        \"ProductId\": 1,\r\n        \"Quantity\": 10\r\n    },\r\n    {\r\n        \"ProductId\": 3,\r\n        \"Quantity\": 5\r\n    }\r\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server-url}}/api/Order/create",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "api",
+                "Order",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "(4) All products (again)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access-token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server-url}}/api/Product/list?page=1&pageSize=10",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "api",
+                "Product",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Happy Flow Product CRUD",
+      "item": [
+        {
+          "name": "(1) All Products",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access-token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server-url}}/api/Product/list?page=1&pageSize=10",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "api",
+                "Product",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "(2) Admin login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (!pm.environment.name.startsWith('ShoppingApp')) {\r",
+                  "    console.log('Environment is not Shopping App');\r",
+                  "    return;\r",
+                  "}\r",
+                  "\r",
+                  "let jsonData = pm.response.json();\r",
+                  "if (jsonData.isSuccess){\r",
+                  "    pm.environment.set(\"access-token\", jsonData.value.accessToken);\r",
+                  "    pm.environment.set(\"refresh-token\", jsonData.value.refreshToken);\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"admin@shoppingapp.hr\",\r\n    \"password\": \"Admin123!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server-url}}/api/Auth/login",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "api",
+                "Auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "(3) Create Product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (!pm.environment.name.startsWith('ShoppingApp')) {\r",
+                  "    console.log('Environment is not Shopping App');\r",
+                  "    return;\r",
+                  "}\r",
+                  "\r",
+                  "let jsonData = pm.response.json();\r",
+                  "if (jsonData.isSuccess){\r",
+                  "    pm.environment.set(\"last-product-id\", jsonData.value.id);\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access-token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"Name\": \"Umbrella\",\r\n    \"Sku\": 1320,\r\n    \"Price\": 5.20\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server-url}}/api/Product/create",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "api",
+                "Product",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "(4) All products",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access-token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server-url}}/api/Product/list?page=1&pageSize=10",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "api",
+                "Product",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "(5) Update Product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access-token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"Id\": {{last-product-id}},\r\n    \"Name\": \"Umbrella\",\r\n    \"Sku\": 1450,\r\n    \"Price\": 5.20\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server-url}}/api/Product/update",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "api",
+                "Product",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "(6) All products",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access-token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server-url}}/api/Product/list?page=1&pageSize=10",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "api",
+                "Product",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "(7) Delete Product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access-token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"Id\": {{last-product-id}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server-url}}/api/Product/delete",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "api",
+                "Product",
+                "delete"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "(8) All products",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{access-token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server-url}}/api/Product/list?page=1&pageSize=10",
+              "host": [
+                "{{server-url}}"
+              ],
+              "path": [
+                "api",
+                "Product",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
