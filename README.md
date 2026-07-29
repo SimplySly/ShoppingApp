@@ -31,7 +31,7 @@ Setup
 	 }
    }
 
-   - appsettings.json already contains placeholders. See ShoppingApp.Web/appsettings.json for the Jwt:Issuer and Jwt:Audience values (defaults in the repo: Jwt:Issuer = https://localhost:7159, Jwt:Audience = ShoppingAppApi).
+   - appsettings.json already contains placeholders. See ShoppingApp.Web/appsettings.json
 
 4. Launch the application using the HTTPS profile for the Web project (select the ShoppingApp.Web HTTPS profile in Visual Studio and run). Ensure the HTTPS port matches the Jwt:Issuer if you changed it.
 
