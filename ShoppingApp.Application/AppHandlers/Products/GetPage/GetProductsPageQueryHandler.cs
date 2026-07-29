@@ -3,7 +3,7 @@ using ShoppingApp.Core.Errors;
 using ShoppingApp.Core.Repository;
 using ShoppingApp.Core.Utility;
 
-namespace ShoppingApp.Application.AppHandlers.Product.GetPage;
+namespace ShoppingApp.Application.AppHandlers.Products.GetPage;
 
 public sealed class GetProductsPageQueryHandler : IQueryHandler<GetProductsPageQuery, IEnumerable<ProductDto>>
 {

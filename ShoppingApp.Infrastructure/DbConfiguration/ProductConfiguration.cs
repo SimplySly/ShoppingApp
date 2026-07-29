@@ -10,11 +10,12 @@ internal class ProductConfiguration : IEntityTypeConfiguration<Product>
     {
         builder.ToTable("Product", "dbo");
 
-        builder
-            .HasKey(p => p.Id);
+        builder.HasKey(p => p.Id);
 
-        builder
-            .Property(p => p.Name)
+        builder.Property(p => p.Name)
             .HasMaxLength(150);
+
+        builder.HasIndex(x => x.Name)
+            .IsUnique();
     }
 }

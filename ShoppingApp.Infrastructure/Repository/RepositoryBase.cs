@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ShoppingApp.Core.Abstractions.Repository;
+﻿using ShoppingApp.Core.Abstractions.Repository;
 using ShoppingApp.Infrastructure.Database;
 
 namespace ShoppingApp.Infrastructure.Repository;
@@ -29,13 +28,8 @@ public class RepositoryBase<T> : IRepository<T>
         _dbContext.Set<T>().Update(entity);
     }
 
-    public async Task Delete(object id, CancellationToken cancellationToken)
+    public void Delete(T entity)
     {
-        var entity = await GetById(id, cancellationToken);
-
-        if (entity != null)
-        {
-            _dbContext.Set<T>().Remove(entity);
-        }
+        _dbContext.Set<T>().Remove(entity);
     }
 }
