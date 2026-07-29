@@ -52,8 +52,3 @@ Testing
 
 4. Run the requests in the order provided by the collection. The requests will set and update environment variables during the flows so they execute without manual modification.
 
-Notes
------
-
-- If you change Jwt:Issuer in appsettings.json, update the HTTPS launch profile or adjust the Postman requests to use the new issuer/port.
-- Keep secrets out of source control. Only the secret values added via Manage User Secrets are private and not checked in.
